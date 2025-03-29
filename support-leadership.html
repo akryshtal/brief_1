@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support for Ukraine's leadership and their approach to negotiations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .intro {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+            font-style: normal;
+        }
+        h1, h2, h3 {
+            color: #2B4C6F;
+        }
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .references {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .references h3 {
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .references ol {
+            padding-left: 20px;
+        }
+        .references li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #2B4C6F;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #FFD700;
+        }
+        sup {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .intro {
+                padding: 12px;
+                margin: 12px 0;
+            }
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <!-- Add table of contents after header -->
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="#" class="current-page">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>1. Support for Ukraine's leadership and their approach to negotiations</h1>
+
+        <h2>1.1 Trust in President Zelensky</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Popular support for Ukrainian state leadership, particularly President Zelensky, has <span class="highlight">increased back to 65-70%</span> after encounters between President Trump and President Zelensky in February 2025, demonstrating a "rally around the flag" effect.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="zelensky-trust-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, February 20-21, 2025</div>
+        
+        <div class="analysis-text">
+            <p>The trust dynamics for President Zelensky show several distinct phases and turning points over the 2018-2025 period:</p>
+            <p><strong>Pre-war period (2018-2022):</strong> After winning the presidency with high initial approval, Zelensky experienced a gradual decline in public trust, fluctuating between 25-35% during 2020-2021 as domestic reforms stalled and challenges mounted.</p>
+            <p><strong>Russian Invasion (February 2022):</strong> The full-scale invasion triggered an unprecedented surge in trust, jumping from 33% to <span class="trends-up">93%</span>, the highest recorded level. This represents a classic "rally-around-the-flag" effect during an existential national crisis.</p>
+            <p><strong>Sustained wartime leadership (2022-2023):</strong> Trust remained remarkably high (80-90%) throughout the first year of the war, bolstered by successful counteroffensives like the <span class="event-label">Kharkiv operation in September 2022</span>, which temporarily increased trust by 4 percentage points.</p>
+            <p><strong>War fatigue period (2023-2024):</strong> A gradual erosion of trust is evident as the war extended into its second year, declining to around 62-64% by late 2024 as military progress stalled and economic difficulties persisted.</p>
+            <p><strong>Post-US Election period (November 2024-January 2025):</strong> Following the US elections, trust in Zelensky showed a <span class="trends-up">slight increase</span> from 63% to 67%, possibly reflecting public hopes for new diplomatic opportunities.</p>
+            <p><strong>Trump-Zelensky Meeting effect (February 2025):</strong> The diplomatic engagement between Presidents Trump and Zelensky provided a second "rally around the flag" moment, with trust increasing to <span class="trends-up">71%</span>. This suggests that Ukrainians responded positively to the potential for high-level diplomatic resolution while maintaining strong support for their leadership.</p>
+        </div>
+
+        <h2>1.2 Support for direct negotiations with Russia</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>The number of Ukrainians who support direct negotiations with Russia has <span class="highlight">steadily increased</span> over 2024-2025, reaching 65% by January 2025. This trend indicates growing openness to diplomacy but not unconditional surrender.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="negotiations-support-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, February 20-21, 2025</div>
+        
+        <div class="analysis-text">
+            <p>The timeline shows a clear evolution in Ukrainian attitudes toward direct negotiations with Russia:</p>
+            <p><strong>Early 2024:</strong> At the beginning of 2024, a majority of Ukrainians (59%) opposed direct negotiations with Russia, while only 38% supported them. This reflected the prevailing sentiment that negotiations might lead to unfavorable terms.</p>
+            <p><strong>Mid-2024 transition:</strong> By mid-2024, we observe a pivotal shift, with support for negotiations crossing the 50% threshold in July 2024. This coincides with the period of military stalemate and growing international pressure for diplomatic solutions.</p>
+            <p><strong>Post-US Election acceleration:</strong> Following the US elections in November 2024, support for negotiations increased more rapidly, jumping from 58% to 65% by January 2025. This <span class="trends-up">27-point increase</span> over one year represents a significant shift in public opinion.</p>
+            <p><strong>Opposition decline:</strong> The percentage of Ukrainians opposing negotiations has dropped by half, from 59% to 29%, indicating a growing pragmatism among the population as the war enters its fourth year.</p>
+            <p>This trend aligns with the observation in the brief that support for negotiations is increasing but remains conditional on security guarantees. The data suggests Ukrainians are increasingly willing to consider diplomatic paths while maintaining resolve about their core conditions.</p>
+        </div>
+
+        <h2>1.3 Fight or negotiate? (2022-2024)</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Public opinion has shifted significantly from 2022 to 2024. While 73% preferred to continue fighting until victory in 2022, by late 2024 a majority (52%) favored seeking negotiated solutions, showing <span class="highlight">evolving perspectives on conflict resolution</span>.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="fight-vs-negotiate-timeline-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Gallup Poll, November 19, 2024</div>
+        
+        <div class="analysis-text">
+            <p>The dramatic three-year evolution in Ukrainian attitudes toward war strategy demonstrates a profound shift in public sentiment:</p>
+            <p><strong>2022 (Initial invasion period):</strong> In the first year of the full-scale invasion, a substantial majority (73%) of Ukrainians favored continuing to fight until victory. This reflected the initial shock, patriotic resistance, and confidence following successful defense of Kyiv and recapture of territories in Kharkiv and Kherson.</p>
+            <p><strong>2023 (Stalemate period):</strong> By 2023, support for continuing to fight remained the majority position at 63%, but had decreased by 10 percentage points. The shift reflected the reality of a protracted conflict with limited territorial gains despite significant human costs.</p>
+            <p><strong>2024 (War fatigue period):</strong> The most dramatic shift occurred between 2023 and 2024, with support for fighting until victory dropping by <span class="trends-down">25 percentage points</span> to become the minority position (38%). Simultaneously, preference for negotiated solutions rose to 52%, marking a complete reversal from 2022 attitudes.</p>
+            <p>This reversal represents one of the most significant shifts in Ukrainian public opinion during the war. It aligns with the brief's observation that "polls indicate shifting notions on what can ultimately be accepted as victory." The consistency in the "Don't know" category (5-10%) suggests that most Ukrainians maintained clear positions throughout this evolution.</p>
+        </div>
+
+        <h2>1.4 Rejection of exclusion from negotiations</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Ukrainians overwhelmingly reject (91%) the idea of direct negotiations between the USA and Russia without Ukraine's participation, demonstrating a strong preference for Ukraine's <span class="highlight">agency in any peace process</span>.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="us-russia-negotiations-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, February 2025</div>
+
+        <h2>1.5 Belief in victory & willingness to continue fighting</h2>
+
+        <div class="toggle-container">
+            <button class="toggle-btn active" onclick="toggleChart('belief-victory-chart', 'continue-without-us-chart', this)">Belief in victory</button>
+            <button class="toggle-btn" onclick="toggleChart('continue-without-us-chart', 'belief-victory-chart', this)">Continue fighting without US support</button>
+        </div>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>While a majority (59%) of Ukrainians still believe victory is possible, an even larger proportion (74%) are willing to continue fighting even without US support. This indicates that <span class="highlight">willingness to fight remains high</span> even as views on achievable victory evolve.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="belief-victory-chart"></canvas>
+            <canvas id="continue-without-us-chart" style="display: none;"></canvas>
+        </div>
+        <div class="data-source">Source: The Economist/Ipsos Ukrainian Citizens Survey, March 2025</div>
+
+        <script>
+            // Data
+            const zelenskyTrustData = {
+                labels: [
+                    "Apr 2018", "Sep 2018", "Oct 2018", "Dec 2018", "Jan 2019",
+                    "Feb 2019", "Mar 2019", "Apr 2019", "May 2019", "Jun 2019", "Jul 2019", "Sep 2019", "Oct 2019", "Nov 2019", "Dec 2019",
+                    "Jan 2020", "Feb 2020", "Mar 2020", "Apr 2020", "May 2020", "Jun 2020", "Jul 2020", "Aug 2020", "Sep 2020", "Oct 2020", "Nov 2020", "Dec 2020",
+                    "Jan 2021", "Feb 2021", "Mar 2021", "Apr 2021", "May 2021", "Jun 2021", "Jul 2021", "Sep 2021", "Oct 2021", "Nov 2021", "Dec 2021",
+                    "Jan 2022", "Feb 2022", "Mar 2022", "Apr 2022", "May 2022", "Aug 2022", "Oct 2022", "Nov 2022",
+                    "Feb 2023", "Jul 2023", "Aug 2023", "Sep 2023", "Nov 2023",
+                    "Jan 2024", "Feb 2024", "Mar 2024", "Apr 2024", "Jun 2024", "Aug 2024", "Oct 2024", "Nov 2024", "Jan 2025", "Feb 2025"
+                ],
+                datasets: [{
+                    label: 'Trust in President Zelensky (%)',
+                    data: [32, 35, 32, 34, 37,
+                           34, 43, 58, 69, 66, 65, 76, 63, 59, 67,
+                           59, 51, 50, 56, 57, 50, 41, 38, 41, 45, 44, 43,
+                           37, 38, 43, 45, 46, 43, 45, 50, 41, 37, 37,
+                           36, 41, 91, 92, 92, 89, 92, 91,
+                           91, 88, 82, 80, 75,
+                           68, 57, 63, 65, 61, 60, 56, 53, 57, 65],
+                    borderColor: '#1e40af',
+                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    tension: 0.3
+                }]
+            };
+
+            // Negotiations support data
+            const negotiationSupportData = {
+                labels: ['Jan 2024', 'Jul 2024', 'Nov 2024', 'Jan 2025'],
+                datasets: [
+                    {
+                        label: 'Support negotiations',
+                        data: [38, 52, 58, 65],
+                        backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                        borderColor: '#22c55e',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Oppose negotiations',
+                        data: [59, 45, 37, 29],
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: '#ef4444',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Don\'t know',
+                        data: [3, 3, 5, 6],
+                        backgroundColor: 'rgba(156, 163, 175, 0.8)',
+                        borderColor: '#9ca3af',
+                        borderWidth: 1
+                    }
+                ]
+            };
+
+            // US-Russia negotiations data
+            const usRussiaNegotiationsData = {
+                labels: ['Reject', 'Support', 'Don\'t know'],
+                datasets: [{
+                    data: [91, 7, 2],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.8)',  // Red for reject
+                        'rgba(34, 197, 94, 0.8)',  // Green for support
+                        'rgba(156, 163, 175, 0.8)' // Gray for don't know
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            };
+
+            // Key events for annotations
+            const keyEvents = [
+                {
+                    date: "Apr 2019",
+                    label: "Zelensky Elected",
+                    index: 7,
+                    description: "Volodymyr Zelensky elected as President of Ukraine with unprecedented support"
+                },
+                { 
+                    date: "Feb 2022", 
+                    label: "Russian Invasion", 
+                    index: 39,
+                    description: "Full-scale Russian invasion begins, triggering unprecedented surge in trust from 41% to 91%"
+                },
+                { 
+                    date: "Sep 2022", 
+                    label: "Kharkiv Counteroffensive", 
+                    index: 43,
+                    description: "Successful Ukrainian counteroffensive in Kharkiv region, maintaining high trust at 92%"
+                },
+                { 
+                    date: "Jun 2023", 
+                    label: "Counteroffensive Launch", 
+                    index: 47,
+                    description: "Major Ukrainian counteroffensive begins in southern Ukraine"
+                },
+                { 
+                    date: "Nov 2023", 
+                    label: "Avdiivka Battle", 
+                    index: 49,
+                    description: "Intense fighting around Avdiivka marks shift to defensive operations"
+                },
+                { 
+                    date: "Nov 2024", 
+                    label: "US Elections", 
+                    index: 57,
+                    description: "US presidential election results lead to slight decrease in trust to 53%"
+                },
+                { 
+                    date: "Feb 2025", 
+                    label: "Trump-Zelensky Meeting", 
+                    index: 59,
+                    description: "Diplomatic engagement between Presidents Trump and Zelensky leads to trust increase to 65%"
+                }
+            ];
+
+            // Function to toggle between charts
+            function toggleChart(showChartId, hideChartId, button) {
+                document.querySelectorAll('.toggle-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+                document.getElementById(showChartId).style.display = 'block';
+                document.getElementById(hideChartId).style.display = 'none';
+            }
+
+            // Initialize charts
+            window.onload = function() {
+                // Zelensky trust chart
+                const zelenskyTrustChart = new Chart(
+                    document.getElementById('zelensky-trust-chart'),
+                    {
+                        type: 'line',
+                        data: zelenskyTrustData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    title: {
+                                        display: true,
+                                        text: 'Trust (%)',
+                                        font: {
+                                            weight: 'bold',
+                                            size: 14
+                                        }
+                                    },
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Trust in President Zelensky (2018-2025)',
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                    titleColor: '#2c5282',
+                                    bodyColor: '#2d3748',
+                                    borderColor: '#e2e8f0',
+                                    borderWidth: 1,
+                                    cornerRadius: 6,
+                                    padding: 12,
+                                    bodyFont: {
+                                        size: 14
+                                    },
+                                    titleFont: {
+                                        size: 16,
+                                        weight: 'bold'
+                                    },
+                                    callbacks: {
+                                        beforeBody: function(context) {
+                                            // Find if there's an event at this index
+                                            const event = keyEvents.find(e => e.index === context[0].dataIndex);
+                                            if (event) {
+                                                return [
+                                                    `Key Event: ${event.label}`,
+                                                    `Description: ${event.description}`,
+                                                    '----------------------------------------'  // Separator
+                                                ];
+                                            }
+                                            return [];
+                                        },
+                                        label: function(context) {
+                                            return `${context.dataset.label}: ${context.parsed.y}%`;
+                                        }
+                                    }
+                                },
+                                annotation: {
+                                    annotations: keyEvents.map((event, index) => ({
+                                        type: 'line',
+                                        scaleID: 'x',
+                                        value: event.index,
+                                        borderColor: [
+                                            'rgba(66, 153, 225, 0.8)',
+                                            'rgba(237, 67, 55, 0.8)',
+                                            'rgba(72, 187, 120, 0.8)',
+                                            'rgba(66, 153, 225, 0.8)',
+                                            'rgba(159, 122, 234, 0.8)',
+                                            'rgba(236, 201, 75, 0.8)',
+                                            'rgba(245, 101, 101, 0.8)'
+                                        ][index % 7],
+                                        borderWidth: 3,
+                                        borderDash: [5, 5],
+                                        label: {
+                                            content: `${event.label} (${event.date})`,
+                                            enabled: true,
+                                            position: index % 2 === 0 ? 'start' : 'end',
+                                            backgroundColor: [
+                                                'rgba(66, 153, 225, 0.8)',
+                                                'rgba(237, 67, 55, 0.8)',
+                                                'rgba(72, 187, 120, 0.8)',
+                                                'rgba(66, 153, 225, 0.8)',
+                                                'rgba(159, 122, 234, 0.8)',
+                                                'rgba(236, 201, 75, 0.8)',
+                                                'rgba(245, 101, 101, 0.8)'
+                                            ][index % 7],
+                                            color: 'white',
+                                            font: { weight: 'bold', size: 11 },
+                                            padding: 6,
+                                            borderRadius: 4,
+                                            yAdjust: index * 30
+                                        }
+                                    }))
+                                },
+                                zoom: {
+                                    pan: {
+                                        enabled: true,
+                                        mode: 'x'
+                                    },
+                                    zoom: {
+                                        wheel: {
+                                            enabled: true
+                                        },
+                                        pinch: {
+                                            enabled: true
+                                        },
+                                        mode: 'x'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+
+                // Negotiations support chart
+                const negotiationsSupportChart = new Chart(
+                    document.getElementById('negotiations-support-chart'),
+                    {
+                        type: 'bar',
+                        data: negotiationSupportData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: {
+                                    stacked: true,
+                                },
+                                y: {
+                                    stacked: true,
+                                    max: 100,
+                                    title: {
+                                        display: true,
+                                        text: 'Percentage (%)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Support for Direct Negotiations with Russia',
+                                    font: {
+                                        size: 16
+                                    }
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false
+                                }
+                            }
+                        }
+                    }
+                );
+
+                // Fight vs Negotiate timeline chart
+                const fightVsNegotiateTimelineChart = new Chart(
+                    document.getElementById('fight-vs-negotiate-timeline-chart'),
+                    {
+                        type: 'line',
+                        data: {
+                            labels: ["2022", "2023", "2024"],
+                            datasets: [
+                                {
+                                    label: 'Continue fighting until victory (%)',
+                                    data: [73, 63, 38],
+                                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                    borderColor: '#2563eb',
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: 'white',
+                                    pointBorderColor: '#2563eb',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 8
+                                },
+                                {
+                                    label: 'Seek to negotiate ending ASAP (%)',
+                                    data: [22, 27, 52],
+                                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                    borderColor: '#22c55e',
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: 'white',
+                                    pointBorderColor: '#22c55e',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 8
+                                },
+                                {
+                                    label: 'Don\'t know/Refused (%)',
+                                    data: [5, 10, 9],
+                                    backgroundColor: 'rgba(156, 163, 175, 0.1)',
+                                    borderColor: '#9ca3af',
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: 'white',
+                                    pointBorderColor: '#9ca3af',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            interaction: {
+                                mode: 'index',
+                                intersect: false
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    title: {
+                                        display: true,
+                                        text: 'Percentage (%)',
+                                        font: {
+                                            weight: 'bold',
+                                            size: 14
+                                        }
+                                    },
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
+                                    },
+                                    ticks: {
+                                        font: {
+                                            size: 14,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Evolution of Ukrainian Views on War Strategy (2022-2024)',
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                    titleColor: '#2c5282',
+                                    bodyColor: '#2d3748',
+                                    borderColor: '#e2e8f0',
+                                    borderWidth: 1,
+                                    cornerRadius: 6,
+                                    padding: 12
+                                },
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        boxWidth: 15,
+                                        usePointStyle: true,
+                                        pointStyle: 'circle',
+                                        padding: 20,
+                                        font: {
+                                            size: 14
+                                        }
+                                    }
+                                },
+                                annotation: {
+                                    annotations: {
+                                        crossoverPoint: {
+                                            type: 'point',
+                                            xValue: 2.5,
+                                            yValue: 40,
+                                            backgroundColor: 'rgba(255, 99, 132, 0)',
+                                            borderWidth: 0,
+                                            radius: 0,
+                                            label: {
+                                                content: 'Crossover Point (2023-2024)',
+                                                enabled: true,
+                                                position: 'top',
+                                                backgroundColor: 'rgba(107, 114, 128, 0.8)',
+                                                color: 'white',
+                                                font: {
+                                                    weight: 'bold'
+                                                },
+                                                padding: 6,
+                                                borderRadius: 4
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+
+                // US-Russia negotiations chart
+                const usRussiaNegotiationsChart = new Chart(
+                    document.getElementById('us-russia-negotiations-chart'),
+                    {
+                        type: 'pie',
+                        data: usRussiaNegotiationsData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Support for US-Russia Negotiations without Ukraine\'s Participation (February 2025)',
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.label}: ${context.raw}%`;
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        boxWidth: 15,
+                                        padding: 20,
+                                        font: {
+                                            size: 14
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+
+                // Belief in victory chart
+                const beliefVictoryChart = new Chart(
+                    document.getElementById('belief-victory-chart'),
+                    {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Strongly agree', 'Tend to agree', 'Neither agree nor disagree', 'Tend to disagree', 'Strongly disagree', 'Don\'t know'],
+                            datasets: [{
+                                label: '"I believe Ukraine can still win the war on the battlefield"',
+                                data: [36, 23, 12, 11, 10, 8],
+                                backgroundColor: [
+                                    '#1e40af', '#3b82f6', '#93c5fd', 
+                                    '#fecaca', '#ef4444', '#9ca3af'
+                                ],
+                                borderColor: '#ffffff',
+                                borderWidth: 2,
+                                hoverOffset: 15
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '55%',
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: ['Belief in Ukrainian Victory on the Battlefield (March 2025)', 'Total Agreement: 59%'],
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.label}: ${context.raw}%`;
+                                        }
+                                    }
+                                },
+                                subtitle: {
+                                    display: true,
+                                    text: '"I believe Ukraine can still win the war on the battlefield"',
+                                    font: {
+                                        size: 14,
+                                        style: 'italic'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        boxWidth: 15,
+                                        padding: 15,
+                                        font: {
+                                            size: 13
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+
+                // Continue without US support chart
+                const continueWithoutUSChart = new Chart(
+                    document.getElementById('continue-without-us-chart'),
+                    {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Strongly agree', 'Tend to agree', 'Neither agree nor disagree', 'Tend to disagree', 'Strongly disagree', 'Don\'t know'],
+                            datasets: [{
+                                label: '"Ukraine should continue fighting even if the United States withdraws all support"',
+                                data: [56, 18, 7, 5, 8, 7],
+                                backgroundColor: [
+                                    '#1e40af', '#3b82f6', '#93c5fd', 
+                                    '#fecaca', '#ef4444', '#9ca3af'
+                                ],
+                                borderColor: '#ffffff',
+                                borderWidth: 2,
+                                hoverOffset: 15
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '55%',
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: ['Willingness to Continue Fighting without US Support (March 2025)', 'Total Agreement: 74%'],
+                                    font: {
+                                        size: 18,
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                subtitle: {
+                                    display: true,
+                                    text: '"Ukraine should continue fighting even if the United States withdraws all support"',
+                                    font: {
+                                        size: 14,
+                                        style: 'italic'
+                                    },
+                                    padding: {
+                                        bottom: 15
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.label}: ${context.raw}%`;
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        boxWidth: 15,
+                                        padding: 15,
+                                        font: {
+                                            size: 13
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                );
+            };
+        </script>
+
+        <!-- Add next page link at the bottom -->
+        <div style="text-align: right; margin-top: 30px;">
+            <a href="security-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                Next: Security issues →
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

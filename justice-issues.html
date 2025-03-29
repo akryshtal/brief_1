@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justice Issues in Ukraine's Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h4 {
+            margin: 0;
+            color: #4A5568;
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .document-title h1:after {
+            display: none;
+        }
+        h1 {
+            color: #2B4C6F;
+            margin-top: 0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 2px;
+        }
+        h2 {
+            color: #2B4C6F;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .chart-container-small {
+            height: 300px;
+        }
+        .chart-container-large {
+            height: 400px;
+        }
+        .key-finding {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+        }
+        .key-finding h3 {
+            margin-top: 0;
+            color: #2B4C6F;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .key-finding p {
+            margin-bottom: 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2B4C6F;
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+        .current-page {
+            font-weight: 600 !important;
+            background-color: rgba(255, 215, 0, 0.3);
+            color: white !important;
+            position: relative;
+        }
+        .current-page:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #FFD700;
+            border-radius: 2px;
+        }
+        .toggle-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            padding: 8px 16px;
+            background-color: #f7fafc;
+            border: 1px solid #2B4C6F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .toggle-btn:hover {
+            background-color: rgba(43, 76, 111, 0.1);
+        }
+        .toggle-btn.active {
+            background: #2B4C6F;
+            color: white;
+        }
+        .data-source {
+            font-size: 0.8em;
+            color: #718096;
+            margin-top: 8px;
+            font-style: italic;
+            text-align: right;
+        }
+        .highlight {
+            background: #FFD700;
+            padding: 3px 6px;
+            border-radius: 0;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .analysis-text {
+            margin: 15px 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .chart-container {
+                height: 350px;
+                padding: 12px;
+                margin: 15px 0;
+            }
+            .chart-container-large {
+                height: 450px;
+            }
+            .key-finding {
+                padding: 12px;
+                margin: 12px 0;
+            }
+        }
+        .back-to-index {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2B4C6F;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .back-to-index:hover {
+            transform: translateX(-5px);
+        }
+        .back-to-index:before {
+            content: '←';
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="#" class="current-page">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>4. Justice issues</h1>
+
+        <h2>4.1 The meaning of justice for Ukrainians</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p><span class="highlight">Punishment of those guilty of crimes</span> is the most important aspect of justice for nearly half of Ukrainians (47%), followed by establishing the truth about all events (30%). This reflects a strong desire for accountability that aligns with Ukraine's position that accountability for crimes of aggression and war crimes should be non-negotiable.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="justice-concept-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2024</div>
+        
+        <div class="analysis-text">
+            <p>When asked what justice regarding Russia's aggression against Ukraine personally means to them, Ukrainians express clear priorities:</p>
+            <p><strong>Punishment of perpetrators</strong> is paramount, with 47% of respondents identifying this as their primary understanding of justice. This strong emphasis on accountability aligns with Ukraine's negotiating position that prosecution of war crimes and crimes of aggression cannot be compromised.</p>
+            <p><strong>Establishing the truth</strong> about events ranks second at 30%, indicating that documentation and acknowledgment of what happened is also considered an essential component of justice.</p>
+            <p><strong>Material compensation</strong>, though important at 17%, ranks third, suggesting that while reparations matter, they are viewed as secondary to accountability and truth-seeking.</p>
+            <p>The minimal percentage of respondents who found it difficult to answer (3%) or chose "other" options (3%) indicates that Ukrainians have clear and well-formed conceptions of what justice should entail in this context.</p>
+        </div>
+
+        <h2>4.2 The necessity of bringing perpetrators to justice</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Three-quarters of Ukrainians (75%) believe justice <span class="highlight">cannot be achieved without the arrest and prosecution</span> of perpetrators of aggression and war crimes, with 50% stating that justice would be completely impossible without accountability. This underscores the centrality of criminal accountability in Ukrainian conceptions of justice.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="perpetrators-justice-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2024</div>
+        
+        <div class="analysis-text">
+            <p>The data reveals an overwhelming consensus among Ukrainians on the necessity of legal accountability for perpetrators:</p>
+            <p>A striking 75% believe justice cannot be achieved without bringing perpetrators to justice, with 50% stating it would be "not at all" possible and 25% saying it would be "rather" not possible.</p>
+            <p>Only 22% believe justice could be achieved without arresting and prosecuting perpetrators (9% "definitely yes" and 13% "rather yes"), while just 3% found it difficult to answer.</p>
+            <p>This strong consensus explains why Ukraine's government has maintained accountability as a non-negotiable element in peace talks. The absence of questions about accountability in most surveys about negotiations likely reflects this settled consensus in Ukrainian society.</p>
+            <p>The data suggests that any peace framework that fails to include robust mechanisms for legal accountability would face significant challenges in gaining acceptance among the Ukrainian population.</p>
+        </div>
+        
+        <h2>4.3 Justice priorities for Ukrainian government and society</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Ukrainians identify <span class="highlight">bringing perpetrators to justice (55%)</span> and <span class="highlight">removing collaborators from government (46%)</span> as the top priorities for ensuring justice. This focus on accountability and governance integrity takes precedence over material concerns like infrastructure restoration (14%) or property compensation (12%).</p>
+        </div>
+
+        <div class="chart-container chart-container-large">
+            <canvas id="justice-priorities-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2024</div>
+        
+        <div class="analysis-text">
+            <p>When asked about government and societal priorities for ensuring justice, Ukrainians demonstrate a clear hierarchy of concerns:</p>
+            <p><strong>Accountability mechanisms</strong> dominate the top priorities, with bringing perpetrators to justice (55%) and removing collaborators from government (46%) ranking first and second. This suggests Ukrainians view justice primarily through the lens of addressing those responsible for wrongdoing.</p>
+            <p><strong>Humanitarian concerns</strong> form a secondary cluster of priorities, including finding missing persons (30%), establishing facts of crimes (24%), and obtaining financial compensation (23%).</p>
+            <p><strong>International pressure mechanisms</strong> such as strengthening sanctions (20%) also receive significant support, showing the recognition of external tools for achieving justice.</p>
+            <p><strong>Material reconstruction</strong> priorities—including infrastructure restoration (14%), property compensation (12%), and medical assistance (10%)—rank lower, suggesting Ukrainians view physical rebuilding as important but secondary to addressing the human dimensions of justice.</p>
+            <p>The relative ranking of these priorities reinforces the brief's assessment that accountability for crimes is non-negotiable for Ukrainians, and explains why this issue has remained central to Ukraine's negotiating position despite the significant material destruction caused by the war.</p>
+        </div>
+
+        <h2>4.4 Implications for negotiation approaches</h2>
+        
+        <div class="analysis-text">
+            <p>The data on justice issues reveals several important implications for negotiation approaches:</p>
+            <p><strong>Accountability as a core demand:</strong> The consistent prioritization of bringing perpetrators to justice—across multiple survey questions—confirms that accountability mechanisms must be central to any peace framework. This helps explain why Ukraine has consistently maintained that prosecution for crimes of aggression and war crimes is non-negotiable.</p>
+            <p><strong>Multiple dimensions of justice:</strong> While punishment of perpetrators is paramount, Ukrainians also value truth-seeking, addressing collaborators, finding missing persons, and obtaining compensation. This suggests an effective justice approach within negotiations needs to be comprehensive rather than narrowly focused.</p>
+            <p><strong>Institutional requirements:</strong> The data supports Ukraine's position that independent, international, and national legal mechanisms are needed. The high priority given to accountability implies that ad hoc or symbolic justice measures would likely be insufficient for Ukrainian society.</p>
+            <p><strong>Material versus moral justice:</strong> The relatively lower ranking of material concerns (compensation, reconstruction) compared to accountability suggests that economic inducements alone would be insufficient to balance an absence of meaningful accountability measures.</p>
+            <p><strong>Timing considerations:</strong> The expectation that perpetrators should face justice "in the coming years" suggests that while Ukrainians demand accountability, there may be some flexibility on immediate implementation if credible mechanisms and commitments are established.</p>
+            <p><strong>Non-negotiable status:</strong> The overwhelming consensus that justice requires accountability (75%) explains why this issue has largely been absent from surveys about potential compromises—unlike territorial or security issues where public opinion has shown more flexibility. For most Ukrainians, accountability appears to be a requirement for justice rather than an optional element to be negotiated.</p>
+        </div>
+
+        <!-- Add navigation links at the bottom -->
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <a href="territorial-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                ← Previous: Territorial issues
+            </a>
+            <a href="humanitarian-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                Next: Humanitarian issues →
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        // Justice concept data
+        const justiceConceptData = {
+            labels: [
+                'Punishment of those guilty of crimes',
+                'Establishing the truth about all events',
+                'Compensation of losses to all affected individuals',
+                'Hard to say',
+                'Other'
+            ],
+            datasets: [{
+                data: [47, 30, 17, 3, 3],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',   // Blue
+                    'rgba(67, 147, 195, 0.8)',   // Medium Blue
+                    'rgba(53, 126, 199, 0.8)',   // Light Blue
+                    'rgba(156, 163, 175, 0.8)',  // Gray
+                    'rgba(180, 180, 180, 0.8)'   // Light Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Perpetrators justice data
+        const perpetratorsJusticeData = {
+            labels: [
+                'Not at all',
+                'Rather no',
+                'Rather yes',
+                'Definitely yes',
+                'Hard to answer'
+            ],
+            datasets: [{
+                data: [50, 25, 13, 9, 3],
+                backgroundColor: [
+                    'rgba(237, 67, 55, 0.8)',    // Red
+                    'rgba(245, 158, 11, 0.8)',   // Orange
+                    'rgba(132, 204, 22, 0.8)',   // Light Green
+                    'rgba(34, 197, 94, 0.8)',    // Green
+                    'rgba(156, 163, 175, 0.8)'   // Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Justice priorities data
+        const justicePrioritiesData = {
+            labels: [
+                'Bringing the perpetrators to justice',
+                'Purification of the government by removing collaborators',
+                'Finding missing persons and returning deported persons',
+                'Establishing the facts of crimes',
+                'Obtaining financial compensation',
+                'Promoting sanctions and freezing Russian assets',
+                'Restoration of destroyed infrastructure',
+                'Restoration of destroyed private property',
+                'Medical and psychological assistance',
+                'Business development and investment programs'
+            ],
+            datasets: [{
+                label: 'Priority Level (%)',
+                data: [55, 46, 30, 24, 23, 20, 14, 12, 10, 8],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',  // Darkest blue for top priority
+                    'rgba(43, 76, 125, 0.8)',
+                    'rgba(43, 76, 139, 0.8)',
+                    'rgba(43, 76, 153, 0.8)',
+                    'rgba(43, 76, 167, 0.8)',
+                    'rgba(43, 76, 181, 0.8)',
+                    'rgba(43, 76, 195, 0.8)',
+                    'rgba(43, 76, 209, 0.8)',
+                    'rgba(43, 76, 223, 0.8)',
+                    'rgba(43, 76, 237, 0.8)'   // Lightest blue for lowest priority
+                ],
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1
+            }]
+        };
+
+        // Initialize charts
+        window.onload = function() {
+            // Justice concept chart
+            const justiceConceptChart = new Chart(
+                document.getElementById('justice-concept-chart'),
+                {
+                    type: 'pie',
+                    data: justiceConceptData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'What does the concept of justice regarding Russia\'s aggression against Ukraine personally mean to you?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Perpetrators justice chart
+            const perpetratorsJusticeChart = new Chart(
+                document.getElementById('perpetrators-justice-chart'),
+                {
+                    type: 'pie',
+                    data: perpetratorsJusticeData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'If the perpetrators are not arrested and brought to justice in the coming years, can justice be done?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '75% believe justice cannot be achieved without prosecuting perpetrators',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Justice priorities chart
+            const justicePrioritiesChart = new Chart(
+                document.getElementById('justice-priorities-chart'),
+                {
+                    type: 'bar',
+                    data: justicePrioritiesData,
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 60,
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Which of the following should be the priority of the Ukrainian government and society in ensuring justice?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Priority level: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            );
+        };
+
+        // Add navigation styles at the bottom
+        const navigationStyle = {
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '30px'
+        };
+
+        const navigationLinkStyle = {
+            color: '#2B4C6F',
+            textDecoration: 'none',
+            fontWeight: '500'
+        };
+
+        document.querySelector('.container').appendChild(navigationDiv);
+    </script>
+</body>
+</html>

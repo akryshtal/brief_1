@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Territorial Issues in Ukraine's Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h4 {
+            margin: 0;
+            color: #4A5568;
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .document-title h1:after {
+            display: none;
+        }
+        h1 {
+            color: #2B4C6F;
+            margin-top: 0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 2px;
+        }
+        h2 {
+            color: #2B4C6F;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .chart-container-small {
+            height: 300px;
+        }
+        .key-finding {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+        }
+        .key-finding h3 {
+            margin-top: 0;
+            color: #2B4C6F;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .key-finding p {
+            margin-bottom: 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2B4C6F;
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+        .current-page {
+            font-weight: 600 !important;
+            background-color: rgba(255, 215, 0, 0.3);
+            color: white !important;
+            position: relative;
+        }
+        .current-page:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #FFD700;
+            border-radius: 2px;
+        }
+        .toggle-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            padding: 8px 16px;
+            background-color: #f7fafc;
+            border: 1px solid #2B4C6F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .toggle-btn:hover {
+            background-color: rgba(43, 76, 111, 0.1);
+        }
+        .toggle-btn.active {
+            background: #2B4C6F;
+            color: white;
+        }
+        .data-source {
+            font-size: 0.8em;
+            color: #718096;
+            margin-top: 8px;
+            font-style: italic;
+            text-align: right;
+        }
+        .highlight {
+            background: #FFD700;
+            padding: 3px 6px;
+            border-radius: 0;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .analysis-text {
+            margin: 15px 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .comparison-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .comparison-item h3 {
+            color: #2B4C6F;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 8px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .chart-container {
+                height: 350px;
+                padding: 12px;
+                margin: 15px 0;
+            }
+            .key-finding {
+                padding: 12px;
+                margin: 12px 0;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="#" class="current-page">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>3. Territorial issues</h1>
+
+        <h2>3.1 Attitudes toward territorial compromises</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A majority of Ukrainians (58%) oppose making territorial compromises to end the war, while a significant minority (25%) support such compromises. This reflects a <span class="highlight">growing openness to considering territorial concessions</span> as a component of potential peace negotiations, compared to earlier stages of the war.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="territorial-compromises-chart"></canvas>
+        </div>
+        <div class="data-source">Source: The Economist/Ukrainian Citizens Attitudes Survey, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>The data reveals a nuanced picture of Ukrainian attitudes toward territorial compromises:</p>
+            <p>While a clear majority (58%) oppose territorial compromises (combining "strongly disagree" at 42% and "tend to disagree" at 16%), a quarter of respondents express support for such concessions (10% "strongly agree" and 15% "tend to agree").</p>
+            <p>The 10% of respondents who neither agree nor disagree, combined with the 8% who declined to answer, suggests some uncertainty or ambivalence on this sensitive issue among approximately one-fifth of the population.</p>
+            <p>This represents a significant evolution from the strong opposition to territorial concessions seen in the early stages of the full-scale invasion, reflecting the lengthy duration of the conflict and its impact on public sentiment.</p>
+            <p>This data aligns with the brief's assessment that while Ukrainians do not legally recognize Russian annexations, there is increasing pragmatism about the potential need to accept de-facto Russian control of certain territories as part of a stable peace arrangement with adequate security guarantees.</p>
+        </div>
+
+        <h2>3.2 Dynamics of attitudes toward territorial concessions (2022-2025)</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Ukrainian attitudes toward territorial concessions have undergone <span class="highlight">a significant shift since 2022</span>, with willingness to consider concessions rising from 10% to 39% by early 2025. Opposition to any territorial concessions has correspondingly declined from 82% to 50%.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="dynamics-chart"></canvas>
+        </div>
+        <div class="data-source">Source: KIIS, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>The time series data demonstrates a clear and consistent trend in Ukrainian public opinion regarding territorial concessions:</p>
+            <p><strong>Early war sentiment (2022-early 2023):</strong> During the initial phase of the full-scale invasion, overwhelming majorities (82-87%) rejected any territorial concessions, with only 8-10% willing to consider them. This reflected strong national unity and resistance in the face of aggression.</p>
+            <p><strong>Mid-war transition (late 2023-early 2024):</strong> A noticeable shift began in late 2023, with opposition to concessions dropping to 74% by December 2023 and 65% by February 2024, while support for potential concessions rose to 19% and 26% respectively.</p>
+            <p><strong>Recent evolution (2024-2025):</strong> The trend accelerated throughout 2024, culminating in a nearly even split by early 2025, with 50% opposing concessions and 39% open to them—the narrowest gap recorded since the conflict began.</p>
+            <p>This dramatic evolution illustrates how prolonged conflict has gradually modified Ukrainian public positions, creating more space for negotiated solutions that might include territorial arrangements different from pre-2014 borders. This supports the brief's observation that de-facto Russian control of certain areas might be tolerated if accompanied by meaningful security arrangements.</p>
+        </div>
+        
+        <h2>3.3 Readiness for territorial concessions based on perceived Russian war aims</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Ukrainians' willingness to make territorial concessions is <span class="highlight">strongly influenced by their perception of Russia's ultimate goals</span> in the war. When Russia is perceived as seeking only limited territorial control (rather than destruction of Ukrainian statehood), a large majority (78%) would accept territorial compromises.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="russian-goals-chart"></canvas>
+        </div>
+        <div class="data-source">Source: KIIS, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>The data reveals that Ukrainian attitudes toward territorial concessions are contextual rather than absolute, varying significantly based on perceptions of Russia's ultimate objectives:</p>
+            <p><strong>Limited territorial objectives:</strong> When Russians are perceived as seeking only to retain currently occupied territories with no further claims, 78% of Ukrainians would accept territorial concessions to end the war, with only 20% categorically opposed.</p>
+            <p><strong>Moderate territorial expansion:</strong> Even when Russia is perceived as wanting to seize all of Donbas, Zaporizhzhia, and Kherson, 68% would still accept territorial concessions, while opposition rises slightly to 23%.</p>
+            <p><strong>Existential threat scenarios:</strong> Support for concessions drops sharply when Russia is perceived as threatening Ukrainian statehood (34% support) or pursuing genocide (28% support), with majority opposition (57-58%).</p>
+            <p>This pattern suggests most Ukrainians make a clear distinction between scenarios where Russia seeks limited territorial control versus those where it threatens Ukraine's existence as a state. This finding clarifies the brief's observation that Ukrainians may accept de-facto Russian control of some territories if it secures long-term cessation of hostilities and does not threaten Ukraine's continued sovereignty.</p>
+        </div>
+
+        <h2>3.4 Acceptance of specific territorial control scenarios</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>In evaluating specific territorial arrangements, Ukrainians show <span class="highlight">increasing acceptance of compromise scenarios</span> where Ukraine regains some but not all territories. A majority (57%) would accept a peace package where Ukraine regains all territories, but half (50%) would also accept one where Ukraine recovers Kherson and Zaporizhzhia while Russia retains Donbas and Crimea.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="territorial-control-chart"></canvas>
+        </div>
+        <div class="data-source">Source: KIIS, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>The data on specific territorial scenarios provides important nuance to Ukrainian attitudes:</p>
+            <p><strong>Complete territorial restoration</strong> remains the most acceptable option, with 57% support and only 30% categorically opposed—creating a net +27% acceptance.</p>
+            <p><strong>Partial restoration</strong> (Ukraine regains Kherson and Zaporizhzhia while Russia keeps Donbas and Crimea) receives 50% acceptance and 38% opposition—a net +12% acceptance. This relatively high level of acceptance for a compromise outcome is particularly significant.</p>
+            <p><strong>Legitimization of current occupation</strong> (Russia retains all currently occupied territories) faces net rejection at -13% (38% acceptance, 51% opposition), but the fact that over a third of Ukrainians could accept this scenario is noteworthy given the sensitivity of territorial issues.</p>
+            <p>This hierarchical preference pattern aligns with the brief's assessment that while legally rejecting Russian annexations, many Ukrainians might pragmatically accept arrangements based on current frontlines if they deliver security and stability. The data shows a clear preference for recovering as much territory as possible, but also considerable flexibility if a durable peace can be secured.</p>
+        </div>
+
+        <h2>3.5 Implications for negotiation approaches</h2>
+        
+        <div class="analysis-text">
+            <p>The data on territorial issues reveals several important patterns with implications for negotiation strategies:</p>
+            <p><strong>Evolution over time:</strong> Ukrainian attitudes toward territorial issues have progressively shifted from near-unanimous rejection of any concessions in 2022 to a much more divided stance in 2025, creating potential space for compromise solutions that would have been politically impossible earlier.</p>
+            <p><strong>Contextual flexibility:</strong> Ukrainian attitudes are not rigid but respond to different scenarios and conditions. Recognition of Russia's limited territorial goals rather than existential threats significantly increases willingness to consider concessions.</p>
+            <p><strong>De facto vs. de jure distinction:</strong> As suggested in the brief, Ukrainians appear to distinguish between legal recognition of Russian annexations (which remains broadly unacceptable) and pragmatic acceptance of temporary Russian control as part of a stable security arrangement.</p>
+            <p><strong>Trade-offs with security:</strong> The data supports the brief's assessment that territorial concessions might be tolerated "if stable and long-term cessation of fighting is achieved and security is guaranteed." This suggests territorial arrangements should be considered in conjunction with robust security guarantees.</p>
+            <p><strong>Potential compromise framework:</strong> The relatively high acceptance (50%) of a scenario where Ukraine regains some territories (Kherson and Zaporizhzhia) while Russia retains others (Donbas and Crimea) suggests a potential starting point for territorial discussions that might balance Ukrainian and Russian priorities.</p>
+        </div>
+
+        <!-- Update navigation links at bottom to match security-issues.html style -->
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <a href="security-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                ← Previous: Security issues
+            </a>
+            <a href="justice-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                Next: Justice issues →
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        // Territorial compromises data
+        const territorialCompromisesData = {
+            labels: [
+                'Strongly agree',
+                'Tend to agree',
+                'Neither agree nor disagree',
+                'Tend to disagree',
+                'Strongly disagree',
+                'Don\'t know/Decline to answer'
+            ],
+            datasets: [{
+                data: [10, 15, 10, 16, 42, 8],
+                backgroundColor: [
+                    'rgba(43, 159, 75, 0.8)',  // Green - Strongly agree
+                    'rgba(153, 204, 153, 0.8)', // Light Green - Tend to agree
+                    'rgba(236, 201, 75, 0.8)',  // Yellow - Neither
+                    'rgba(245, 158, 11, 0.8)',  // Orange - Tend to disagree
+                    'rgba(237, 67, 55, 0.8)',   // Red - Strongly disagree
+                    'rgba(156, 163, 175, 0.8)'  // Gray - Don't know
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Update the territorialKeyEvents array with correct indices
+        const territorialKeyEvents = [
+            {
+                date: "Feb 2022",
+                label: "Russian Invasion",
+                index: 0,  // May 2022
+                description: "Full-scale invasion begins, 82% reject territorial concessions"
+            },
+            {
+                date: "Sep 2022",
+                label: "Kharkiv Liberation",
+                index: 2,  // Sept 2022
+                description: "Successful counteroffensive peaks opposition to concessions at 87%"
+            },
+            {
+                date: "Dec 2023",
+                label: "Avdiivka Battle",
+                index: 7,  // Dec 2023
+                description: "Heavy fighting leads to shift in attitudes, opposition drops to 74%"
+            },
+            {
+                date: "May 2024",
+                label: "Military Stalemate",
+                index: 9,  // May 2024
+                description: "Extended stalemate reduces opposition to territorial concessions to 55%"
+            },
+            {
+                date: "Feb–Mar 2025",
+                label: "New Peace Initiative",
+                index: 12,  // Feb-Mar 2025
+                description: "International peace talks lead to most balanced split: 50% oppose, 39% support"
+            }
+        ];
+
+        // For reference, here are the labels we're matching against:
+        const dynamicsLabels = [
+            "May 2022",    // 0
+            "Jul 2022",    // 1
+            "Sept 2022",   // 2
+            "Dec 2022",    // 3
+            "Feb 2023",    // 4
+            "May 2023",    // 5
+            "Oct 2023",    // 6
+            "Dec 2023",    // 7
+            "Feb 2024",    // 8
+            "May 2024",    // 9
+            "Oct 2024",    // 10
+            "Dec 2024",    // 11
+            "Feb–Mar 2025" // 12
+        ];
+
+        // Dynamics of concessions data
+        const dynamicsData = {
+            labels: dynamicsLabels,
+            datasets: [
+                {
+                    label: 'No territorial concessions',
+                    data: [82, 84, 87, 85, 87, 84, 80, 74, 65, 55, 58, 51, 50],
+                    backgroundColor: 'rgba(237, 67, 55, 0.1)',
+                    borderColor: 'rgba(237, 67, 55, 0.8)',
+                    borderWidth: 3,
+                    fill: true
+                },
+                {
+                    label: 'May give up territories',
+                    data: [10, 10, 8, 8, 9, 10, 14, 19, 26, 32, 32, 38, 39],
+                    backgroundColor: 'rgba(43, 76, 111, 0.1)',
+                    borderColor: 'rgba(43, 76, 111, 0.8)',
+                    borderWidth: 3,
+                    fill: true
+                },
+                {
+                    label: 'Hard to say',
+                    data: [8, 6, 5, 6, 5, 6, 6, 7, 9, 13, 10, 10, 11],
+                    backgroundColor: 'rgba(156, 163, 175, 0.1)',
+                    borderColor: 'rgba(156, 163, 175, 0.8)',
+                    borderWidth: 3,
+                    fill: true
+                }
+            ]
+        };
+
+        // Russian goals concessions data
+        const russianGoalsData = {
+            labels: [
+                'Retain control over current occupied territories',
+                'Seize all of Donbas, Zaporizhzhia and Kherson',
+                'Seize most territories, establish pro-Russian government',
+                'Seize territories, destroy Ukrainian statehood',
+                'Commit physical genocide of Ukrainians'
+            ],
+            datasets: [
+                {
+                    label: 'Ready to make concessions',
+                    data: [78, 68, 49, 34, 28],
+                    backgroundColor: 'rgba(43, 76, 111, 0.8)',
+                    borderColor: 'rgba(43, 76, 111, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Categorically against concessions',
+                    data: [20, 23, 43, 57, 58],
+                    backgroundColor: 'rgba(237, 67, 55, 0.8)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Territorial control data
+        const territorialControlData = {
+            labels: [
+                'Russia retains control over all occupied territories',
+                'Ukraine regains Kherson & Zaporizhzhia, Russia keeps Donbas & Crimea',
+                'Ukraine regains all territories, including Crimea and Donbas'
+            ],
+            datasets: [
+                {
+                    label: 'Can accept',
+                    data: [38, 50, 57],
+                    backgroundColor: 'rgba(43, 76, 111, 0.8)',
+                    borderColor: 'rgba(43, 76, 111, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Categorically against',
+                    data: [51, 38, 30],
+                    backgroundColor: 'rgba(237, 67, 55, 0.8)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Initialize charts
+        window.onload = function() {
+            // Territorial compromises chart
+            const territorialCompromisesChart = new Chart(
+                document.getElementById('territorial-compromises-chart'),
+                {
+                    type: 'pie',
+                    data: territorialCompromisesData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '"Ukraine should make territorial compromises in order to end the war"',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Dynamics chart
+            const dynamicsChart = new Chart(
+                document.getElementById('dynamics-chart'),
+                {
+                    type: 'line',
+                    data: dynamicsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        tension: 0.3,
+                        elements: {
+                            point: {
+                                radius: 3,
+                                hoverRadius: 7
+                            }
+                        },
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Evolution of Ukrainian Attitudes Toward Territorial Concessions (2022-2025)',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    beforeBody: function(context) {
+                                        // Find if there's an event at this index
+                                        const event = territorialKeyEvents.find(e => e.index === context[0].dataIndex);
+                                        if (event) {
+                                            return [
+                                                `Key Event: ${event.label}`,
+                                                `Description: ${event.description}`,
+                                                '----------------------------------------'  // Separator
+                                            ];
+                                        }
+                                        return [];
+                                    },
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            annotation: {
+                                annotations: territorialKeyEvents.map((event, index) => ({
+                                    type: 'line',
+                                    scaleID: 'x',
+                                    value: event.index,
+                                    borderColor: [
+                                        'rgba(66, 153, 225, 0.8)',
+                                        'rgba(237, 67, 55, 0.8)',
+                                        'rgba(72, 187, 120, 0.8)',
+                                        'rgba(66, 153, 225, 0.8)',
+                                        'rgba(159, 122, 234, 0.8)',
+                                        'rgba(236, 201, 75, 0.8)',
+                                        'rgba(245, 101, 101, 0.8)'
+                                    ][index % 7],
+                                    borderWidth: 3,
+                                    borderDash: [5, 5],
+                                    label: {
+                                        content: `${event.label} (${event.date})`,
+                                        enabled: true,
+                                        position: index % 2 === 0 ? 'start' : 'end',
+                                        backgroundColor: [
+                                            'rgba(66, 153, 225, 0.8)',
+                                            'rgba(237, 67, 55, 0.8)',
+                                            'rgba(72, 187, 120, 0.8)',
+                                            'rgba(66, 153, 225, 0.8)',
+                                            'rgba(159, 122, 234, 0.8)',
+                                            'rgba(236, 201, 75, 0.8)',
+                                            'rgba(245, 101, 101, 0.8)'
+                                        ][index % 7],
+                                        color: 'white',
+                                        font: { weight: 'bold', size: 11 },
+                                        padding: 6,
+                                        borderRadius: 4,
+                                        yAdjust: index * 30
+                                    }
+                                }))
+                            },
+                            zoom: {
+                                pan: {
+                                    enabled: true,
+                                    mode: 'x'
+                                },
+                                zoom: {
+                                    wheel: {
+                                        enabled: true
+                                    },
+                                    pinch: {
+                                        enabled: true
+                                    },
+                                    mode: 'x'
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Russian goals chart
+            const russianGoalsChart = new Chart(
+                document.getElementById('russian-goals-chart'),
+                {
+                    type: 'bar',
+                    data: russianGoalsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                stacked: false,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            y: {
+                                stacked: false,
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Willingness to Make Territorial Concessions Based on Perceived Russian War Aims',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Territorial control chart
+            const territorialControlChart = new Chart(
+                document.getElementById('territorial-control-chart'),
+                {
+                    type: 'bar',
+                    data: territorialControlData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                stacked: false,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            y: {
+                                stacked: false,
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Acceptance of Peace Packages with Different Territorial Control Scenarios',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+        };
+    </script>
+</body>
+</html>

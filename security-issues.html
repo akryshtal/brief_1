@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Issues in Ukraine's Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h4 {
+            margin: 0;
+            color: #4A5568;
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .document-title h1:after {
+            display: none;
+        }
+        h1 {
+            color: #2B4C6F;
+            margin-top: 0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 2px;
+        }
+        h2 {
+            color: #2B4C6F;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .chart-container-small {
+            height: 300px;
+        }
+        .key-finding {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+        }
+        .key-finding h3 {
+            margin-top: 0;
+            color: #2B4C6F;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .key-finding p {
+            margin-bottom: 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2B4C6F;
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+        .current-page {
+            font-weight: 600 !important;
+            background-color: rgba(255, 215, 0, 0.3);
+            color: white !important;
+            position: relative;
+        }
+        .current-page:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #FFD700;
+            border-radius: 2px;
+        }
+        .toggle-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            padding: 8px 16px;
+            background-color: #f7fafc;
+            border: 1px solid #2B4C6F;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .toggle-btn:hover {
+            background-color: rgba(43, 76, 111, 0.1);
+        }
+        .toggle-btn.active {
+            background: #2B4C6F;
+            color: white;
+        }
+        .data-source {
+            font-size: 0.8em;
+            color: #718096;
+            margin-top: 8px;
+            font-style: italic;
+            text-align: right;
+        }
+        .highlight {
+            background: #FFD700;
+            padding: 3px 6px;
+            border-radius: 0;
+            font-weight: 500;
+            color: #2B4C6F;
+        }
+        .analysis-text {
+            margin: 15px 0;
+            text-align: justify;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .comparison-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .comparison-item h3 {
+            color: #2B4C6F;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 8px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .chart-container {
+                height: 350px;
+                padding: 12px;
+                margin: 15px 0;
+            }
+            .key-finding {
+                padding: 12px;
+                margin: 12px 0;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="#" class="current-page">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>2. Security issues</h1>
+
+        <h2>2.1 Ceasefire conditions and security guarantees</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>The overwhelming majority of Ukrainians (83%) support a ceasefire <span class="highlight">only under the condition of providing security guarantees</span> to Ukraine. Only 2% would accept a ceasefire without any conditions, illustrating the critical importance of security guarantees in any negotiation process.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="ceasefire-conditions-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, February 2025</div>
+        
+        <div class="analysis-text">
+            <p>The data demonstrates an overwhelming consensus among Ukrainians on the importance of security guarantees as a prerequisite for any ceasefire agreement. The substantial 83% support for a conditional ceasefire with security guarantees contrasts sharply with minimal support (2%) for an unconditional ceasefire.</p>
+            <p>Notably, a significant minority (11%) rejects a ceasefire under any conditions, suggesting a segment of the population remains skeptical about Russia's willingness to honor agreements regardless of guarantees. This perspective aligns with historical experience of ceasefire violations in eastern Ukraine since 2014.</p>
+            <p>The small percentage of undecided respondents (4%) indicates that most Ukrainians have formed clear opinions on this matter, reflecting the existential nature of security guarantees for the country's future.</p>
+        </div>
+
+        <h2>2.2 Regional perceptions of temporary ceasefire</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Nearly half of Ukrainians (47%) view a temporary ceasefire proposal as <span class="highlight">a way to expose Russia's unwillingness to adhere to agreements</span>. Regional variations exist, with western Ukraine most skeptical about Russia's intentions (55%) and southern Ukraine relatively more optimistic about a ceasefire potentially ending the war (22%).</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="regional-perceptions-chart"></canvas>
+        </div>
+        <div class="data-source">Source: KIIS, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>Regional variations in perceptions of a temporary ceasefire reveal important nuances in Ukrainian public opinion:</p>
+            <p><strong>Western Ukraine</strong> shows the highest skepticism toward Russian intentions, with 55% viewing a ceasefire as primarily a test to demonstrate Russia's untrustworthiness. This region's historical experience and cultural orientation may contribute to greater suspicion of Russian commitments.</p>
+            <p><strong>Southern Ukraine</strong> exhibits relatively more optimism about ceasefire potential, with 22% seeing it as a possible path to war termination on acceptable terms. This may reflect the region's economic interests in Black Sea trade and greater direct exposure to conflict impacts.</p>
+            <p><strong>Eastern Ukraine</strong>, despite its proximity to combat areas, aligns closely with national averages on most perceptions, contradicting assumptions that frontline regions might show distinct attitude patterns.</p>
+            <p>Notably, very few Ukrainians across all regions view a ceasefire as a "step toward surrender" (1-3%), indicating that exploring temporary cessations of hostilities is not generally perceived as capitulation.</p>
+        </div>
+        
+        <h2>2.3 Security preferences: NATO, EU and military capabilities</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Ukrainians strongly reject reducing military capabilities (80% oppose) as part of any peace settlement. Opinions on NATO membership are evenly divided (38% willing to forgo, 37% unwilling), while there is stronger attachment to EU membership aspirations (51% oppose giving up EU membership prospects).</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <h3>NATO membership</h3>
+                <div class="chart-container chart-container-small">
+                    <canvas id="nato-membership-chart"></canvas>
+                </div>
+                <div class="data-source">Source: The Economist/Ipsos, March 2025</div>
+            </div>
+            <div class="comparison-item">
+                <h3>EU membership</h3>
+                <div class="chart-container chart-container-small">
+                    <canvas id="eu-membership-chart"></canvas>
+                </div>
+                <div class="data-source">Source: The Economist/Ipsos, March 2025</div>
+            </div>
+            <div class="comparison-item">
+                <h3>Military power</h3>
+                <div class="chart-container chart-container-small">
+                    <canvas id="military-power-chart"></canvas>
+                </div>
+                <div class="data-source">Source: The Economist/Ipsos, March 2025</div>
+            </div>
+        </div>
+
+        <div class="analysis-text">
+            <p>The three visualizations reveal a clear hierarchy in Ukrainian security preferences that shapes potential negotiation positions:</p>
+            <p><strong>Military capability</strong> emerges as the most non-negotiable security element, with a striking 80% opposing any reduction in Ukraine's military power. This reflects a fundamental shift toward self-reliance for security, as mentioned in the brief, likely informed by the perceived limitations of international security arrangements during the current conflict.</p>
+            <p><strong>EU membership</strong> aspirations hold significant value for Ukrainians, with a majority (51%) unwilling to abandon this path despite the formal absence of collective defense provisions in EU treaties. This suggests Ukrainians view EU integration as providing indirect security benefits through economic integration and norm alignment with Western Europe.</p>
+            <p><strong>NATO membership</strong> shows the most balanced division, with roughly equal proportions willing (38%) and unwilling (37%) to forgo NATO aspirations in exchange for peace. This even split represents a notable evolution in Ukrainian thinking, as NATO membership was previously considered the gold standard of security guarantees.</p>
+            <p>This pattern suggests Ukrainians increasingly conceptualize security through multiple, complementary domains rather than relying on a single security architecture. The data indicates a preference for a hybrid security model combining sovereign military capability with selective international guarantees.</p>
+        </div>
+
+        <h2>2.4 Support for ceasefire without Western security guarantees</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A majority of Ukrainians (55%) oppose accepting a ceasefire without Western security guarantees, although a significant minority (26%) would support such an arrangement. This suggests <span class="highlight">conditional openness to temporary ceasefires</span> without formal guarantees, while maintaining the requirement for security assurances in any permanent settlement.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="ceasefire-without-guarantees-chart"></canvas>
+        </div>
+        <div class="data-source">Source: The Economist/Ipsos, March 2025</div>
+        
+        <div class="analysis-text">
+            <p>The data reveals a nuanced perspective on temporary ceasefire arrangements versus permanent peace settlements:</p>
+            <p>While 83% of Ukrainians require security guarantees for any ceasefire (as shown in section 2.1), this figure drops significantly when specifically asked about Western guarantees, with 26% supporting a ceasefire even without such assurances. This apparent contradiction reflects the distinction Ukrainians make between different types of security arrangements:</p>
+            <p><strong>Temporary ceasefires</strong> may be acceptable without formal Western security guarantees to a significant minority, especially if they serve other purposes such as humanitarian relief, prisoner exchanges, or tactical repositioning.</p>
+            <p><strong>Permanent settlements</strong>, however, retain the requirement for robust, credible security mechanisms, potentially including but not limited to Western guarantees.</p>
+            <p>The significant segment (9%) expressing neutrality on this question further suggests flexibility in Ukrainian thinking about the precise form security arrangements might take, supporting the brief's observation that "there is no consensus how they should look like."</p>
+        </div>
+
+        <!-- Update navigation links at bottom -->
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <a href="support-leadership.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                ← Previous: Support for leadership
+            </a>
+            <a href="territorial-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                Next: Territorial issues →
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        // Ceasefire conditions data
+        const ceasefireConditionsData = {
+            labels: [
+                'Yes, but only with security guarantees',
+                'Should not accept under any conditions',
+                'Difficult to answer',
+                'Yes, without any conditions'
+            ],
+            datasets: [{
+                data: [83, 11, 4, 2],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',  // Blue
+                    'rgba(237, 67, 55, 0.8)',  // Red
+                    'rgba(156, 163, 175, 0.8)', // Gray
+                    'rgba(34, 197, 94, 0.8)'  // Green
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Regional perceptions data
+        const regionalPerceptionsData = {
+            labels: [
+                'Show Russia violates agreements',
+                'Real end to war on acceptable terms',
+                'Unblock US military aid',
+                'Wrong step that weakens Ukraine',
+                'Step of despair due to front situation',
+                'Step towards surrender',
+                'Hard to say'
+            ],
+            datasets: [
+                {
+                    label: 'West',
+                    data: [55, 20, 10, 4, 7, 3, 1],
+                    backgroundColor: 'rgba(43, 76, 111, 0.8)',
+                    borderColor: 'rgba(43, 76, 111, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Center',
+                    data: [46, 16, 15, 9, 7, 1, 7],
+                    backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'South',
+                    data: [41, 22, 10, 12, 7, 2, 6],
+                    backgroundColor: 'rgba(236, 201, 75, 0.8)',
+                    borderColor: 'rgba(236, 201, 75, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'East',
+                    data: [46, 16, 10, 5, 10, 3, 10],
+                    backgroundColor: 'rgba(237, 67, 55, 0.8)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'UKRAINE',
+                    data: [47, 18, 12, 8, 7, 2, 5],
+                    backgroundColor: 'rgba(107, 114, 128, 0.8)',
+                    borderColor: 'rgba(107, 114, 128, 1)',
+                    borderWidth: 2,
+                    type: 'line',
+                    fill: false,
+                    tension: 0.1,
+                    pointStyle: 'rectRot',
+                    pointRadius: 7,
+                    pointBorderColor: 'rgba(107, 114, 128, 1)',
+                    pointBackgroundColor: 'white'
+                }
+            ]
+        };
+
+        // NATO membership data
+        const natoMembershipData = {
+            labels: [
+                'Agree to forgo NATO',
+                'Disagree with forgoing NATO',
+                'Neither agree nor disagree',
+                'Don\'t know'
+            ],
+            datasets: [{
+                data: [38, 37, 15, 10],
+                backgroundColor: [
+                    'rgba(237, 67, 55, 0.8)',
+                    'rgba(43, 76, 111, 0.8)',
+                    'rgba(236, 201, 75, 0.8)',
+                    'rgba(156, 163, 175, 0.8)'
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // EU membership data
+        const euMembershipData = {
+            labels: [
+                'Agree to forgo EU',
+                'Disagree with forgoing EU',
+                'Neither agree nor disagree',
+                'Don\'t know'
+            ],
+            datasets: [{
+                data: [29, 51, 12, 8],
+                backgroundColor: [
+                    'rgba(237, 67, 55, 0.8)',
+                    'rgba(43, 76, 111, 0.8)',
+                    'rgba(236, 201, 75, 0.8)',
+                    'rgba(156, 163, 175, 0.8)'
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Military power data
+        const militaryPowerData = {
+            labels: [
+                'Agree to reduce military',
+                'Disagree with reducing military',
+                'Neither agree nor disagree',
+                'Don\'t know'
+            ],
+            datasets: [{
+                data: [9, 80, 8, 3],
+                backgroundColor: [
+                    'rgba(237, 67, 55, 0.8)',
+                    'rgba(43, 76, 111, 0.8)',
+                    'rgba(236, 201, 75, 0.8)',
+                    'rgba(156, 163, 175, 0.8)'
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Ceasefire without guarantees data
+        const ceasefireWithoutGuaranteesData = {
+            labels: [
+                'Strongly agree',
+                'Tend to agree',
+                'Neither agree nor disagree',
+                'Tend to disagree',
+                'Strongly disagree',
+                'Don\'t know'
+            ],
+            datasets: [{
+                label: '"I support a ceasefire even without security guarantees from the West"',
+                data: [14, 12, 9, 16, 39, 10],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',   // Dark blue - Strongly agree
+                    'rgba(96, 165, 250, 0.8)',   // Light blue - Tend to agree
+                    'rgba(236, 201, 75, 0.8)',   // Yellow - Neither agree nor disagree
+                    'rgba(245, 158, 11, 0.8)',   // Orange - Tend to disagree
+                    'rgba(237, 67, 55, 0.8)',    // Red - Strongly disagree
+                    'rgba(156, 163, 175, 0.8)'   // Gray - Don't know
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Function to toggle between charts
+        function toggleChart(showChartId, hideChartId, button) {
+            // Toggle buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            
+            // Toggle charts
+            document.getElementById(showChartId).style.display = 'block';
+            document.getElementById(hideChartId).style.display = 'none';
+        }
+
+        // Initialize charts
+        window.onload = function() {
+            // Ceasefire conditions chart
+            const ceasefireConditionsChart = new Chart(
+                document.getElementById('ceasefire-conditions-chart'),
+                {
+                    type: 'pie',
+                    data: ceasefireConditionsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Should Ukraine agree to a ceasefire?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Regional perceptions chart
+            const regionalPerceptionsChart = new Chart(
+                document.getElementById('regional-perceptions-chart'),
+                {
+                    type: 'bar',
+                    data: regionalPerceptionsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                stacked: false,
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                stacked: false,
+                                beginAtZero: true,
+                                max: 60,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Regional Perception of the Temporary Ceasefire Proposal',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 15,
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // NATO membership chart
+            const natoMembershipChart = new Chart(
+                document.getElementById('nato-membership-chart'),
+                {
+                    type: 'doughnut',
+                    data: natoMembershipData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '50%',
+                        plugins: {
+                            title: {
+                                display: false
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '"Ukraine should agree not to seek NATO membership in order to end the war"',
+                                font: {
+                                    size: 12,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // EU membership chart
+            const euMembershipChart = new Chart(
+                document.getElementById('eu-membership-chart'),
+                {
+                    type: 'doughnut',
+                    data: euMembershipData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '50%',
+                        plugins: {
+                            title: {
+                                display: false
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '"Ukraine should agree not to seek EU membership in order to end the war"',
+                                font: {
+                                    size: 12,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Military power chart
+            const militaryPowerChart = new Chart(
+                document.getElementById('military-power-chart'),
+                {
+                    type: 'doughnut',
+                    data: militaryPowerData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '50%',
+                        plugins: {
+                            title: {
+                                display: false
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '"Ukraine should agree to cut its military power in order to end the war"',
+                                font: {
+                                    size: 12,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Ceasefire without guarantees chart
+            const ceasefireWithoutGuaranteesChart = new Chart(
+                document.getElementById('ceasefire-without-guarantees-chart'),
+                {
+                    type: 'pie',
+                    data: ceasefireWithoutGuaranteesData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Support for Ceasefire Without Western Security Guarantees',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '"I support a ceasefire even without security guarantees from the West"',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+        };
+    </script>
+</body>
+</html>

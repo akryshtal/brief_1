@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economic Issues in Ukraine's Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .intro {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+            font-style: normal;
+        }
+        h1, h2, h3 {
+            color: #2B4C6F;
+        }
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .references {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .references h3 {
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .references ol {
+            padding-left: 20px;
+        }
+        .references li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #2B4C6F;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #FFD700;
+        }
+        sup {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .intro {
+                padding: 12px;
+                margin: 12px 0;
+            }
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="#" class="current-page">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>6. Economic issues</h1>
+
+        <h2>6.1 Attitudes toward lifting Western sanctions on Russia</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>78% of Ukrainians oppose lifting Western sanctions against Russia as a condition to end the war, with only 7% supporting such a move. This opposition has <span class="highlight">remained stable</span> over the past year, reinforcing the brief's assertion that sanctions should remain until Russia takes viable steps to halt its aggression.</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <div class="chart-container">
+                    <canvas id="sanctions-pie-chart"></canvas>
+                </div>
+                <div class="data-source">Source: Razumkov Center, March 2025</div>
+            </div>
+            <div class="comparison-item">
+                <div class="chart-container">
+                    <canvas id="sanctions-time-chart"></canvas>
+                </div>
+                <div class="data-source">Source: Razumkov Center, 2024-2025</div>
+            </div>
+        </div>
+        
+        <h2>6.2 Implications for negotiation approaches</h2>
+        
+        <div class="analysis-text">
+            <p>The strong societal consensus (78%) means sanctions relief should be linked to specific Russian actions rather than offered as a pre-emptive concession.</p>
+            <p>This position aligns with other non-negotiable components like captive returns and accountability for war crimes, reflecting Ukrainian insistence on maintaining pressure until tangible progress occurs.</p>
+        </div>
+
+        <div class="navigation-links">
+            <a href="humanitarian-issues.html" class="prev-link">← Previous: Humanitarian issues</a>
+            <a href="domestic-policy.html" class="next-link">Next: Issues of Ukrainian domestic policy →</a>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        // Sanctions pie chart data
+        const sanctionsPieData = {
+            labels: [
+                'Should agree',
+                'Should not agree',
+                'Hard to answer'
+            ],
+            datasets: [{
+                data: [7, 78, 14],
+                backgroundColor: [
+                    'rgba(34, 197, 94, 0.8)',   // Green - Should agree
+                    'rgba(237, 67, 55, 0.8)',   // Red - Should not agree
+                    'rgba(156, 163, 175, 0.8)'  // Gray - Hard to answer
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Data for sanctions bar chart (comparative view)
+        const sanctionsBarData = {
+            labels: ['June 2024', 'March 2025'],
+            datasets: [
+                {
+                    label: 'Should agree',
+                    data: [9, 7],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Should not agree',
+                    data: [77, 78],
+                    backgroundColor: 'rgba(237, 67, 55, 0.7)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Hard to answer',
+                    data: [14, 14],
+                    backgroundColor: 'rgba(156, 163, 175, 0.7)',
+                    borderColor: 'rgba(156, 163, 175, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Initialize charts
+        window.onload = function() {
+            // Sanctions pie chart
+            const sanctionsPieChart = new Chart(
+                document.getElementById('sanctions-pie-chart'),
+                {
+                    type: 'pie',
+                    data: sanctionsPieData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Should Ukraine agree to lift Western sanctions against Russia?',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: 'March 2025',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Sanctions bar chart
+            const sanctionsBarChart = new Chart(
+                document.getElementById('sanctions-time-chart'),
+                {
+                    type: 'bar',
+                    data: sanctionsBarData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Change in Attitudes (2024-2025)',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues of Ukrainian Domestic Policy in Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .intro {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+            font-style: normal;
+        }
+        h1, h2, h3 {
+            color: #2B4C6F;
+        }
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .references {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .references h3 {
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .references ol {
+            padding-left: 20px;
+        }
+        .references li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #2B4C6F;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #FFD700;
+        }
+        sup {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .intro {
+                padding: 12px;
+                margin: 12px 0;
+            }
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="#" class="current-page">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>7. Issues of Ukrainian domestic policy</h1>
+
+        <h2>7.1 Elections and timing</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A strong majority (62%) of Ukrainians believe elections should <span class="highlight">not be held until the war formally ends</span>, while only 14% support holding elections as soon as possible. This supports the brief's assertion that "Ukrainians are clearly against any elections before the fighting is over and martial law is lifted."</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="election-timing-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Ipsos/The Economist, March 2025</div>
+        
+        <h2>7.2 Support for different election types during war</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Strong opposition to holding elections during wartime is evident across all election types, with presidential elections facing the <span class="highlight">highest opposition (60%)</span>. Even a referendum on ending the war faces substantial opposition (38%), confirming Ukrainians' preference to wait until after the war.</p>
+        </div>
+
+        <div class="chart-container chart-container-large">
+            <canvas id="election-types-chart"></canvas>
+        </div>
+        <div class="data-source">Source: IRI, September-October 2024</div>
+
+        <div class="analysis-text">
+            <p>While all election types face net opposition during war, a referendum about ending the war receives the most support (54%), suggesting Ukrainians see value in public consultation specifically on peace terms.</p>
+            <p>Presidential elections face the strongest opposition (60%), aligning with the emphasis on postponing elections until proper conditions exist.</p>
+            <p>Across all election types, strong opposition consistently outweighs strong support, indicating firm conviction rather than mild preference for postponing elections.</p>
+        </div>
+        
+        <h2>7.3 Presidential legitimacy</h2>
+
+        <div class="chart-container">
+            <canvas id="legitimacy-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Ipsos/The Economist, March 2025</div>
+
+        <div class="analysis-text">
+            <p>Despite the delayed elections, 80% of Ukrainians believe President Zelensky maintains the same democratic legitimacy as before his term's originally scheduled expiration. This widespread recognition of constitutional continuity during wartime helps explain why most Ukrainians prioritize ending the war over holding elections.</p>
+        </div>
+        
+        <h2>7.4 Language policy</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A majority of Ukrainians (54%) oppose accepting Russian as a language in some parts of the country to end the war, confirming the assertion that <span class="highlight">making Russian a second state language is "clearly non-admissible"</span> for Ukrainians. However, up to 41% could potentially accept Russian as a second state language in certain contexts.</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <div class="chart-container">
+                    <canvas id="russian-language-chart"></canvas>
+                </div>
+                <div class="data-source">Source: Ipsos/The Economist, March 2025</div>
+            </div>
+            <div class="comparison-item">
+                <div class="chart-container">
+                    <canvas id="language-policy-chart"></canvas>
+                </div>
+                <div class="data-source">Source: KIIS, March 2025</div>
+            </div>
+        </div>
+
+        <div class="analysis-text">
+            <p>When asked directly if Ukraine should "accept Russian language in some parts of the country to end the war," 54% disagree while 29% agree, showing clear majority opposition.</p>
+            <p>However, when asked about accepting "Russian as a second state language" as part of a broader peace package, acceptability rises to 41%, though opposition remains higher at 48%.</p>
+            <p>By contrast, 55% can accept "Ukrainian as the only state language" with only 32% opposed, indicating stronger preference for Ukrainian-only status.</p>
+        </div>
+
+        <h2>7.5 Decision-making autonomy</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A clear majority of Ukrainians (59%) support their country making decisions independently, while only 37% would accept coordination with Russia. This demonstrates a strong preference for <span class="highlight">maintaining full Ukrainian sovereignty</span> in decision-making.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="autonomy-chart"></canvas>
+        </div>
+        <div class="data-source">Source: KIIS, March 2025</div>
+
+        <!-- Add navigation links at the bottom -->
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <a href="economic-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                ← Previous: Economic issues
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Add this before the window.onload function
+        Chart.register(ChartDataLabels);
+
+        // Data
+        // Election timing data
+        const electionTimingData = {
+            labels: [
+                'As soon as possible',
+                'Not until there is a ceasefire',
+                'Not until the war formally ends',
+                'Never',
+                'Don\'t know/Decline to answer'
+            ],
+            datasets: [{
+                data: [14, 19, 62, 1, 4],
+                backgroundColor: [
+                    'rgba(237, 67, 55, 0.8)',   // Red
+                    'rgba(245, 158, 11, 0.8)',  // Orange
+                    'rgba(43, 76, 111, 0.8)',   // Blue
+                    'rgba(0, 0, 0, 0.8)',       // Black
+                    'rgba(156, 163, 175, 0.8)'  // Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Election types during war data
+        const electionTypesData = {
+            labels: [
+                'Referendum on ending the war',
+                'Parliamentary elections',
+                'Local elections',
+                'Presidential elections'
+            ],
+            datasets: [
+                {
+                    label: 'Strongly support',
+                    data: [29, 28, 24, 22],
+                    backgroundColor: 'rgba(34, 197, 94, 0.9)',  // Darker green
+                    stack: 'Stack 0',
+                },
+                {
+                    label: 'Somewhat support',
+                    data: [25, 18, 21, 14],
+                    backgroundColor: 'rgba(132, 204, 22, 0.9)', // Lighter green
+                    stack: 'Stack 0',
+                },
+                {
+                    label: 'Somewhat oppose',
+                    data: [13, 16, 17, 18],
+                    backgroundColor: 'rgba(245, 158, 11, 0.9)', // Orange
+                    stack: 'Stack 0',
+                },
+                {
+                    label: 'Strongly oppose',
+                    data: [25, 36, 34, 42],
+                    backgroundColor: 'rgba(237, 67, 55, 0.9)',  // Red
+                    stack: 'Stack 0',
+                },
+                {
+                    label: 'Hard to answer',
+                    data: [8, 3, 3, 4],
+                    backgroundColor: 'rgba(156, 163, 175, 0.9)', // Gray
+                    stack: 'Stack 0',
+                }
+            ]
+        };
+
+        // Presidential legitimacy data
+        const legitimacyData = {
+            labels: [
+                'Yes',
+                'No',
+                'Don\'t know/Decline to answer'
+            ],
+            datasets: [{
+                data: [80, 14, 6],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',   // Blue
+                    'rgba(237, 67, 55, 0.8)',   // Red
+                    'rgba(156, 163, 175, 0.8)'  // Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Russian language agreement data
+        const russianLanguageData = {
+            labels: [
+                'Agree\n(29%)',
+                'Neither agree nor disagree\n(11%)',
+                'Disagree\n(54%)',
+                'Don\'t know\n(7%)'
+            ],
+            datasets: [{
+                data: [29, 11, 54, 7],
+                backgroundColor: [
+                    'rgba(34, 197, 94, 0.8)',   // Green - Agree
+                    'rgba(156, 163, 175, 0.8)',  // Gray - Neither
+                    'rgba(237, 67, 55, 0.8)',    // Red - Disagree
+                    'rgba(100, 116, 139, 0.8)'   // Dark Gray - Don't know
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Language policy data
+        const languagePolicyData = {
+            labels: [
+                'Russian becomes the second state language',
+                'Ukrainian remains the only state language'
+            ],
+            datasets: [
+                {
+                    label: 'Can accept',
+                    data: [41, 55],
+                    backgroundColor: 'rgba(43, 76, 111, 0.8)',
+                    borderColor: 'rgba(43, 76, 111, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Categorically against',
+                    data: [48, 32],
+                    backgroundColor: 'rgba(237, 67, 55, 0.8)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Add new autonomy data
+        const autonomyData = {
+            labels: [
+                'Ukraine must coordinate decisions with Russia',
+                'Ukraine can make decisions without Russian control'
+            ],
+            datasets: [
+                {
+                    label: 'Can accept',
+                    data: [37, 59],
+                    backgroundColor: 'rgba(43, 76, 111, 0.8)',
+                    borderColor: 'rgba(43, 76, 111, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Categorically against',
+                    data: [50, 30],
+                    backgroundColor: 'rgba(237, 67, 55, 0.8)',
+                    borderColor: 'rgba(237, 67, 55, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Initialize charts
+        window.onload = function() {
+            // Election timing chart
+            const electionTimingChart = new Chart(
+                document.getElementById('election-timing-chart'),
+                {
+                    type: 'pie',
+                    data: electionTimingData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'How soon should Presidential and Parliamentary elections be held in Ukraine?',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            datalabels: {
+                                display: function(context) {
+                                    return context.dataset.data[context.dataIndex] > 3;
+                                },
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Election types chart
+            const electionTypesChart = new Chart(
+                document.getElementById('election-types-chart'),
+                {
+                    type: 'bar',
+                    data: electionTypesData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                stacked: true,
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    },
+                                    font: {
+                                        size: 12
+                                    },
+                                    maxRotation: 0
+                                },
+                                max: 100
+                            },
+                            y: {
+                                stacked: true,
+                                grid: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 14,
+                                        weight: '500'
+                                    },
+                                    padding: 10
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Support for conducting elections while the war is ongoing',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold',
+                                    family: "'Helvetica Neue', Arial, sans-serif"
+                                },
+                                padding: {
+                                    top: 10,
+                                    bottom: 30
+                                },
+                                color: '#2B4C6F'
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2B4C6F',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                padding: 20,
+                                labels: {
+                                    boxWidth: 12,
+                                    boxHeight: 12,
+                                    padding: 20,
+                                    font: {
+                                        size: 13
+                                    },
+                                    usePointStyle: true,
+                                    pointStyle: 'circle'
+                                }
+                            },
+                            datalabels: {
+                                display: function(context) {
+                                    return context.dataset.data[context.dataIndex] > 10;
+                                },
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 12
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                anchor: 'center',
+                                align: 'center',
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                right: 20
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Presidential legitimacy chart
+            const legitimacyChart = new Chart(
+                document.getElementById('legitimacy-chart'),
+                {
+                    type: 'pie',
+                    data: legitimacyData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Does President Zelensky have as much democratic legitimacy as before the originally scheduled expiration of his term?',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            datalabels: {
+                                display: function(context) {
+                                    return context.dataset.data[context.dataIndex] > 3;
+                                },
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Russian language chart
+            const russianLanguageChart = new Chart(
+                document.getElementById('russian-language-chart'),
+                {
+                    type: 'pie',
+                    data: russianLanguageData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Should Ukraine accept Russian language use in some parts of the country?',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                }
+                            },
+                            legend: {
+                                display: false
+                            },
+                            datalabels: {
+                                display: function(context) {
+                                    return context.dataset.data[context.dataIndex] > 5;
+                                },
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Language policy chart
+            const languagePolicyChart = new Chart(
+                document.getElementById('language-policy-chart'),
+                {
+                    type: 'bar',
+                    data: languagePolicyData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Acceptance of language policies in peace agreement',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15
+                                }
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 12
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                anchor: 'center',
+                                align: 'center',
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Autonomy chart
+            const autonomyChart = new Chart(
+                document.getElementById('autonomy-chart'),
+                {
+                    type: 'bar',
+                    data: autonomyData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Support for Ukrainian Decision-Making Autonomy',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15
+                                }
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#ffffff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 12
+                                },
+                                formatter: function(value) {
+                                    return value + '%';
+                                },
+                                anchor: 'center',
+                                align: 'center',
+                                textShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                }
+            );
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanitarian Issues in Ukraine's Negotiation Approaches</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2B4C6F;
+            padding-bottom: 20px;
+        }
+        .center-name {
+            text-align: center;
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .center-name h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .center-name h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: normal;
+            color: #4A5568;
+        }
+        .document-title {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .document-title h1 {
+            margin: 0;
+            color: #2B4C6F;
+            font-size: 28px;
+            padding-bottom: 0;
+        }
+        .intro {
+            background-color: #FFD700;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-left: 5px solid #2B4C6F;
+            font-style: normal;
+        }
+        h1, h2, h3 {
+            color: #2B4C6F;
+        }
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            font-weight: 600;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .references {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .references h3 {
+            color: #2B4C6F;
+            margin-bottom: 15px;
+        }
+        .references ol {
+            padding-left: 20px;
+        }
+        .references li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #2B4C6F;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #FFD700;
+        }
+        sup {
+            vertical-align: super;
+            font-size: 0.7em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .intro {
+                padding: 12px;
+                margin: 12px 0;
+            }
+        }
+        .toc {
+            background: #2B4C6F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .toc h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: white;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+        .toc h2:after {
+            display: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-to-index">Back to Table of Contents</a>
+        <div class="header">
+            <div class="center-name">
+                <h2>Mediation and Dialogue Research Center</h2>
+                <h3>National University of Kyiv-Mohyla Academy</h3>
+            </div>
+            <div class="document-title">
+                <h4>Annexe to the brief №1</h4>
+                <h4>Within negotiation support briefs: "Ukrainian voices"</h4>
+                <h1>What do Ukrainians think about current negotiation approaches?</h1>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>Table of contents</h2>
+            <ul>
+                <li><a href="brief.html"><strong>Brief #1</strong></a></li>
+                <li><a href="support-leadership.html">1. Support for Ukraine's leadership and their approach to negotiations</a></li>
+                <li><a href="security-issues.html">2. Security issues</a></li>
+                <li><a href="territorial-issues.html">3. Territorial issues</a></li>
+                <li><a href="justice-issues.html">4. Justice issues</a></li>
+                <li><a href="humanitarian-issues.html" class="current-page">5. Humanitarian issues</a></li>
+                <li><a href="economic-issues.html">6. Economic issues</a></li>
+                <li><a href="domestic-policy.html">7. Issues of Ukrainian domestic policy</a></li>
+            </ul>
+        </div>
+
+        <h1>5. Humanitarian issues</h1>
+
+        <h2>5.1 Awareness of civilian captivity</h2>
+        
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A large majority of Ukrainians (78%) are aware of the issue of civilian captivity, with 27% being <span class="highlight">well aware</span> and 51% having heard something about it. This high level of awareness supports the brief's assertion that the return of civilian captives represents a <span class="highlight">widespread public consensus</span> rather than a concern limited to specific advocacy groups.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="awareness-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2025</div>
+        
+        <h2>5.2 Sources of knowledge about civilian captivity</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>Information about <span class="highlight">prisoner exchanges</span> (55%) and <span class="highlight">general awareness of the phenomenon</span> (48%) dominate Ukrainians' knowledge of civilian captivity. This suggests that while the issue has high visibility, many Ukrainians lack detailed information about the scale of the problem or specific government and international initiatives.</p>
+        </div>
+
+        <div class="chart-container chart-container-large">
+            <canvas id="knowledge-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2025</div>
+        
+       
+        <h2>5.3 Personal connection to civilian captivity</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>A significant minority of Ukrainians (16%) report having friends or acquaintances who are or were in civilian captivity. This translates to approximately <span class="highlight">one in six Ukrainians having personal connections to the issue</span>, underscoring its widespread impact across Ukrainian society.</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="personal-connection-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2025</div>
+        
+        <h2>5.4 Responsibility for returning civilian captives</h2>
+
+        <div class="key-finding">
+            <h3>Key Finding</h3>
+            <p>An overwhelming majority of Ukrainians (88%) believe that <span class="highlight">state bodies of Ukraine should be responsible</span> for deciding on the return of civilian hostages. This aligns with the brief's assertion that "the government is expected to prioritise the return of all captives," reflecting clear public consensus on institutional responsibility.</p>
+        </div>
+
+        <div class="chart-container chart-container-large">
+            <canvas id="responsibility-chart"></canvas>
+        </div>
+        <div class="data-source">Source: Rating Group, March 2025</div>
+        
+        <h2>5.5 Implications for negotiation approaches</h2>
+        
+        <div class="analysis-text">
+            <p>The data on civilian captivity issues reveals several important implications for negotiation approaches:</p>
+            <p><strong>Broad-based societal concern:</strong> With 78% awareness and 16% having personal connections to the issue, the return of civilian captives clearly represents a widespread public priority rather than a narrow interest. This supports the brief's characterization of these demands reflecting "widespread public consensus."</p>
+            <p><strong>Clear institutional responsibility:</strong> The overwhelming support (88%) for state bodies taking the lead on captive returns indicates that Ukrainians expect their government, not international mediators or civil society, to be the primary advocate for captives in negotiations. This aligns with the brief's statement that "the government is expected to prioritise the return of all captives."</p>
+            <p><strong>Knowledge gaps and communication opportunities:</strong> While awareness of the issue is high, detailed knowledge about numbers of captives and specific initiatives is limited. This suggests potential value in more robust public communication about the scale of civilian captivity and government efforts to address it.</p>
+            <p><strong>Multi-stakeholder approach:</strong> Although state leadership is paramount, significant minorities recognize roles for international organizations, civil society, and families. This suggests Ukrainians favor a coordinated approach that leverages multiple channels of influence rather than relying exclusively on state-to-state negotiations.</p>
+            <p><strong>Non-negotiable status:</strong> The combination of high awareness, significant personal connections, and clear expectations of state responsibility supports the brief's assessment that prisoner return is considered a "non-negotiable component of any acceptable peace deal." Negotiators should recognize that concessions on this issue would likely face substantial domestic resistance.</p>
+        </div>
+
+        <!-- Add navigation links at the bottom -->
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <a href="justice-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                ← Previous: Justice issues
+            </a>
+            <a href="economic-issues.html" style="color: #2B4C6F; text-decoration: none; font-weight: 500;">
+                Next: Economic issues →
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        // Awareness of civilian captivity data
+        const awarenessData = {
+            labels: [
+                'Yes, I am well aware of it',
+                'Yes, I have heard something about it',
+                'No, I do not know anything about it',
+                'Difficult to answer'
+            ],
+            datasets: [{
+                data: [27, 51, 22, 0],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',   // Blue
+                    'rgba(87, 137, 199, 0.8)',   // Light Blue
+                    'rgba(156, 163, 175, 0.8)',  // Gray
+                    'rgba(200, 200, 200, 0.8)'   // Light Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Knowledge about civilian captivity data
+        const knowledgeData = {
+            labels: [
+                'Information on the release or exchange of prisoners',
+                'Non-systematic reports of the existence of such a phenomenon',
+                'Information on the number of captured civilian Ukrainians',
+                'Information on Ukrainian authorities initiatives',
+                'Information on international authorities initiatives',
+                'Other',
+                'Hard to answer'
+            ],
+            datasets: [{
+                label: 'Percentage of Ukrainians aware of this type of information',
+                data: [55, 48, 21, 17, 14, 1, 2],
+                backgroundColor: [
+                    'rgba(43, 76, 100, 0.8)',
+                    'rgba(43, 76, 122, 0.8)',
+                    'rgba(43, 76, 144, 0.8)',
+                    'rgba(43, 76, 166, 0.8)',
+                    'rgba(43, 76, 188, 0.8)',
+                    'rgba(43, 76, 210, 0.8)',
+                    'rgba(43, 76, 232, 0.8)'
+                ],
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1
+            }]
+        };
+
+        // Personal connection data
+        const personalConnectionData = {
+            labels: [
+                'Yes',
+                'No',
+                'Hard to answer'
+            ],
+            datasets: [{
+                data: [16, 83, 2],
+                backgroundColor: [
+                    'rgba(43, 76, 111, 0.8)',   // Blue
+                    'rgba(156, 163, 175, 0.8)',  // Gray
+                    'rgba(200, 200, 200, 0.8)'   // Light Gray
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // Responsibility for captives return data
+        const responsibilityData = {
+            labels: [
+                'State bodies of Ukraine',
+                'Foreign organizations',
+                'Ukrainian charitable foundations, volunteers',
+                'Families and relatives of prisoners',
+                'Local authorities',
+                'Other',
+                'Difficult to answer'
+            ],
+            datasets: [{
+                label: 'Percentage of Support',
+                data: [88, 37, 27, 21, 19, 1, 1],
+                backgroundColor: [
+                    'rgba(43, 76, 100, 0.8)',
+                    'rgba(43, 76, 122, 0.8)',
+                    'rgba(43, 76, 144, 0.8)',
+                    'rgba(43, 76, 166, 0.8)',
+                    'rgba(43, 76, 188, 0.8)',
+                    'rgba(43, 76, 210, 0.8)',
+                    'rgba(43, 76, 232, 0.8)'
+                ],
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                borderWidth: 1
+            }]
+        };
+
+        // Initialize charts
+        window.onload = function() {
+            // Awareness chart
+            const awarenessChart = new Chart(
+                document.getElementById('awareness-chart'),
+                {
+                    type: 'pie',
+                    data: awarenessData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Have you heard anything about civilian captivity?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '78% of Ukrainians are aware of civilian captivity issues',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Knowledge chart
+            const knowledgeChart = new Chart(
+                document.getElementById('knowledge-chart'),
+                {
+                    type: 'bar',
+                    data: knowledgeData,
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 60,
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'What exactly have you heard or know about Ukrainian civilian prisoners of war?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '(Among those who have heard about civilian captivity)',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.raw}% of Ukrainians`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Personal connection chart
+            const personalConnectionChart = new Chart(
+                document.getElementById('personal-connection-chart'),
+                {
+                    type: 'pie',
+                    data: personalConnectionData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Are there any of your friends or acquaintances who are/were in civilian captivity?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            subtitle: {
+                                display: true,
+                                text: '1 in 6 Ukrainians knows someone who has been in civilian captivity',
+                                font: {
+                                    size: 14,
+                                    style: 'italic'
+                                },
+                                padding: {
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Responsibility chart
+            const responsibilityChart = new Chart(
+                document.getElementById('responsibility-chart'),
+                {
+                    type: 'bar',
+                    data: responsibilityData,
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Percentage (%)',
+                                    font: {
+                                        weight: 'bold',
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Who do you think should decide on the return of civilian hostages?',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                padding: {
+                                    bottom: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                titleColor: '#2c5282',
+                                bodyColor: '#2d3748',
+                                borderColor: '#e2e8f0',
+                                borderWidth: 1,
+                                cornerRadius: 6,
+                                padding: 12,
+                                bodyFont: {
+                                    size: 14
+                                },
+                                titleFont: {
+                                    size: 16,
+                                    weight: 'bold'
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.raw}% of Ukrainians`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            );
+        };
+    </script>
+</body>
+</html>
